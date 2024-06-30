@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://tlkoa6sbnd71" path="res://scenes/player.tscn" id="8_5yrbj"]
 [ext_resource type="Texture2D" uid="uid://c4hkj2ilh3kfs" path="res://art/brackeys_platformer_assets/sprites/platforms.png" id="14_gbit8"]
 [ext_resource type="FontFile" uid="uid://rumvk3huqa2f" path="res://art/brackeys_platformer_assets/fonts/PixelOperator8-Bold.ttf" id="16_bojrd"]
-[ext_resource type="Script" path="res://scenes/Area2D.gd" id="17_3x6ly"]
+[ext_resource type="Script" path="res://scripts/Area2D.gd" id="17_3x6ly"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nemi7"]
 texture = ExtResource("1_64dho")
