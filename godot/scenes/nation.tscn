@@ -4214,5 +4214,11 @@ offset_right = -106.0
 offset_bottom = -208.0
 text = "portal to new world"
 
+[node name="collisions" type="StaticBody2D" parent="."]
+position = Vector2(-608, -256)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="collisions"]
+polygon = PackedVector2Array(0, -8, 1776, 0, 1776, 864, 0, 864, 0, 0, -312, 840, 1792, 1272, 2048, 816, 1744, -232)
+
 [connection signal="pressed" from="MultiplayerHUD/Panel/VBoxContainer/HostGame" to="GameManager" method="become_host"]
 [connection signal="pressed" from="MultiplayerHUD/Panel/VBoxContainer/JoinAsPlayer2" to="GameManager" method="join_as_player_2"]

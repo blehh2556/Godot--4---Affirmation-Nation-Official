@@ -1,9 +1,8 @@
-[gd_scene load_steps=43 format=3 uid="uid://tlkoa6sbnd71"]
+[gd_scene load_steps=42 format=3 uid="uid://tlkoa6sbnd71"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_fj6e4"]
 [ext_resource type="Texture2D" uid="uid://dlmeda0gkx4fj" path="res://art/Base Character - Free/idle.png" id="2_utwvt"]
 [ext_resource type="Texture2D" uid="uid://cud3lvgktnqco" path="res://art/Base Character - Free/walk.png" id="3_eky71"]
-[ext_resource type="FontFile" uid="uid://dqebeph0ojul7" path="res://art/brackeys_platformer_assets/fonts/PixelOperator8.ttf" id="4_hcl1t"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5vvaq"]
 atlas = ExtResource("2_utwvt")
@@ -299,8 +298,7 @@ script = ExtResource("1_fj6e4")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_mhjly")
-animation = &"side_walk"
-frame_progress = 0.597779
+animation = &"front_idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 1
@@ -309,16 +307,10 @@ position = Vector2(0, 5)
 shape = SubResource("CircleShape2D_e5jw4")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, 2)
 zoom = Vector2(4, 4)
+limit_left = -608
+limit_top = -256
+limit_right = 1168
+limit_bottom = 608
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
-
-[node name="Label" type="Label" parent="."]
-offset_left = -23.0
-offset_top = -21.0
-offset_right = 26.0
-offset_bottom = -13.0
-theme_override_fonts/font = ExtResource("4_hcl1t")
-theme_override_font_sizes/font_size = 8
-text = "niademz"
