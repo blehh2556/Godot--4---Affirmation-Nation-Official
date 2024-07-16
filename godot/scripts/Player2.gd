@@ -2,17 +2,22 @@ extends CharacterBody2D
 
 const speed = 100
 var current_dir = "none"
-var is_attacking = false
 
 func _ready():
-	$AnimatedSprite2D.play("front_idle")
+	if name == str(multiplayer.get_unique_id()):
+		$Camera2D.make_current()
+		$AnimatedSprite2D.play("front_idle")
+	else:
+		$Camera2D.enabled = false
 
 func _physics_process(delta):
-	if not is_attacking:
+	if name == str(multiplayer.get_unique_id()):
 		player_movement(delta)
-	axe()
+		syncPos.rpc(global_position)
+	
 
 func player_movement(delta):
+	
 	if Input.is_action_pressed("ui_right"):
 		current_dir = "right"
 		play_anim(1)
@@ -37,56 +42,38 @@ func player_movement(delta):
 		play_anim(0)
 		velocity.x = 0
 		velocity.y = 0
-
+	
 	move_and_slide()
 
 func play_anim(movement):
 	var dir = current_dir
 	var anim = $AnimatedSprite2D
-
+	
 	if dir == "right":
 		anim.flip_h = false
 		if movement == 1:
 			anim.play("side_walk")
 		elif movement == 0:
 			anim.play("side_idle")
-	elif dir == "left":
+	if dir == "left":
 		anim.flip_h = true
 		if movement == 1:
 			anim.play("side_walk")
 		elif movement == 0:
 			anim.play("side_idle")
-	elif dir == "down":
+	if dir == "down":
 		anim.flip_h = true
 		if movement == 1:
 			anim.play("front_walk")
 		elif movement == 0:
 			anim.play("front_idle")
-	elif dir == "up":
+	if dir == "up":
 		anim.flip_h = true
 		if movement == 1:
 			anim.play("back_walk")
 		elif movement == 0:
 			anim.play("back_idle")
 
-func axe():
-	var dir = current_dir
-	var anim = $AnimatedSprite2D
-	if Input.is_action_just_pressed("ui_select"):
-		is_attacking = true
-		if dir == "right":
-			anim.flip_h = false
-			anim.play("side_axe")
-		elif dir == "left":
-			anim.flip_h = true
-			anim.play("side_axe")
-		elif dir == "down":
-			anim.play("front_axe")
-		elif dir == "up":
-			anim.play("back_axe")
-		$deal_attack_timer.start()
-
-func _on_deal_attack_timer_timeout():
-	$deal_attack_timer.stop()
-	is_attacking = false
-	play_anim(0)
+@rpc("any_peer")
+func syncPos(p):
+	global_position = p

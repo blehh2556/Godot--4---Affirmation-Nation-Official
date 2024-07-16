@@ -20,7 +20,7 @@ run/stretch/scale=4.0
 
 MultiplayerManager="*res://scripts/multiplayer/multiplayer_manager.gd"
 Nakama="*res://addons/com.heroiclabs.nakama/Nakama.gd"
-Music="*res://Music.tscn"
+Music="*res://scenes/Music.tscn"
 
 [rendering]
 
