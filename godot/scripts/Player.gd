@@ -3,6 +3,8 @@ extends CharacterBody2D
 const speed = 100
 var current_dir = "none"
 var is_attacking = false
+var tree_inaxe_range = false
+var tree_axe_cooldown = false
 
 func _ready():
 	$AnimatedSprite2D.play("front_idle")
@@ -11,6 +13,7 @@ func _physics_process(delta):
 	if not is_attacking:
 		player_movement(delta)
 	axe()
+	
 
 func player_movement(delta):
 	if Input.is_action_pressed("ui_right"):
@@ -73,6 +76,7 @@ func axe():
 	var dir = current_dir
 	var anim = $AnimatedSprite2D
 	if Input.is_action_just_pressed("ui_select"):
+		Global.player_current_axe = true
 		is_attacking = true
 		if dir == "right":
 			anim.flip_h = false
@@ -84,9 +88,31 @@ func axe():
 			anim.play("front_axe")
 		elif dir == "up":
 			anim.play("back_axe")
+		$axe_cooldown.start()
 		$deal_attack_timer.start()
+
+func player():
+	pass
 
 func _on_deal_attack_timer_timeout():
 	$deal_attack_timer.stop()
 	is_attacking = false
 	play_anim(0)
+
+
+func _on_player_hitbox_body_entered(body):
+	if body.has_method("tree"):
+		tree_inaxe_range = true
+		print("tree")
+		
+
+
+func _on_player_hitbox_body_exited(body):
+	if body.has_method("tree"):
+		tree_inaxe_range = false
+
+
+func _on_axe_cooldown_timeout():
+	$axe_cooldown.stop()
+	Global.player_current_axe = false
+	 # Replace with function body.

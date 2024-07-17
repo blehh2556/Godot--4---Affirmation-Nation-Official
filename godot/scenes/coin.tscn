@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://brmhfy2ol36kc"]
 
-[ext_resource type="Script" path="res://scenes/coin.gd" id="1_nxh4p"]
+[ext_resource type="Script" path="res://coin.gd" id="1_nxh4p"]
 [ext_resource type="Texture2D" uid="uid://lxg8b74kjiis" path="res://art/Mini FX, Items & UI/Common Pick-ups/Coin (16 x 16).png" id="1_pndph"]
 [ext_resource type="AudioStream" uid="uid://28rqa38tvsel" path="res://art/brackeys_platformer_assets/sounds/coin.wav" id="3_icoct"]
 
