@@ -167,6 +167,8 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vdq6c"]
+radius = 17.0
+height = 48.0
 
 [node name="tree" type="CharacterBody2D"]
 y_sort_enabled = true

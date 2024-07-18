@@ -3,7 +3,6 @@ extends CharacterBody2D
 const speed = 100
 var current_dir = "none"
 var is_attacking = false
-var tree_inaxe_range = false
 var tree_axe_cooldown = false
 
 func _ready():
@@ -102,14 +101,14 @@ func _on_deal_attack_timer_timeout():
 
 func _on_player_hitbox_body_entered(body):
 	if body.has_method("tree"):
-		tree_inaxe_range = true
+		Global.tree_inaxe_range = true
 		print("tree")
 		
 
 
 func _on_player_hitbox_body_exited(body):
 	if body.has_method("tree"):
-		tree_inaxe_range = false
+		Global.tree_inaxe_range = false
 
 
 func _on_axe_cooldown_timeout():
