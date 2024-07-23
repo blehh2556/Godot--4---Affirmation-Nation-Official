@@ -7,7 +7,6 @@ var affirmation_open = false
 
 
 func _ready():
-	#player.in_water()
 	print(tile_map.local_to_map(player.position))
 	pass # Replace with function body.
 

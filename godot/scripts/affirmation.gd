@@ -6,6 +6,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	print(Global.affirmation_1_prev_date)
 	Global.load_point_data()
 	$Panel/display_points.text = "Points: " + str(Global.player_point)
 	print("Points: ", Global.player_point)

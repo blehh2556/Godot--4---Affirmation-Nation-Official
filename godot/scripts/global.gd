@@ -9,6 +9,7 @@ var save_path1 = "user://point.save"
 var player_point : int
 var save_path2 = "user://coin.save"
 var player_coin : int
+var affirmation_1_prev_date : String = Time.get_date_string_from_system(true)
 
 func _process(delta):
 	load_wood_data()
