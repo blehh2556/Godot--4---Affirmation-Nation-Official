@@ -4,4 +4,7 @@ extends Area2D
 
 func _on_body_entered(body):
 	print("+1 coin")
+	Global.player_coin += 1
+	Global.save_coins()
+	print("Coin count: ", Global.player_coin)
 	animation_player.play("pickup")

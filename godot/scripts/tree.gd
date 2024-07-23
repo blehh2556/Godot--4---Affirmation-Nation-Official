@@ -3,6 +3,8 @@ extends CharacterBody2D
 var health = 80
 var player_inaxe_zone = false
 
+
+
 func _physics_process(delta):
 	deal_with_damage()
 
@@ -15,6 +17,12 @@ func _on_tree_hitbox_body_entered(body):
 	if body.has_method("player"):
 		player_inaxe_zone = true
 		print("player")
+		if health == 0:
+			Global.player_wood += 1
+			print("Wood: ", Global.player_wood)
+			$".".queue_free()
+			Global.save_wood()
+			pass
 
 
 func _on_tree_hitbox_body_exited(body):

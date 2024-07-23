@@ -2,6 +2,7 @@ extends Node2D
 
 @export var noise_height_text : NoiseTexture2D
 @export var noise_tree_text : NoiseTexture2D
+@onready var player = $Player
 
 var noise : Noise
 var tree_noise : Noise
@@ -37,6 +38,11 @@ func _ready():
 	noise = noise_height_text.noise
 	tree_noise = noise_tree_text.noise
 	generate_world()
+
+func _process(delta):
+	player_in_water()
+	pass
+
 	
 func generate_world():
 	for x in range(-width/2, width/2):
@@ -59,3 +65,12 @@ func generate_world():
 	tile_map.set_cells_terrain_connect(ground_1_layer, sand_tiles_arr,0,terrain_sand_int)
 	tile_map.set_cells_terrain_connect(ground_2_layer, grass_tiles_arr,0,terrain_grass_int)
 	tile_map.set_cells_terrain_connect(cliff_layer, cliff_tiles_arr,0,terrain_cliff_int)
+
+func player_in_water():
+	var tile_data : TileData = tile_map.get_cell_tile_data(1, tile_map.local_to_map(player.position))
+	#print(tile_data)
+	if tile_data == null:
+		player.in_water()
+	else:
+		player.on_land()
+	pass

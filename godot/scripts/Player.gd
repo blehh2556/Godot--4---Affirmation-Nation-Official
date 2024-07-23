@@ -1,12 +1,11 @@
 extends CharacterBody2D
-
-const speed = 100
+var speed : int = 100
 var current_dir = "none"
 var is_attacking = false
 var tree_axe_cooldown = false
 
 func _ready():
-	$AnimatedSprite2D.play("front_idle")
+	$Sprite2D/AnimatedSprite2D.play("front_idle")
 
 func _physics_process(delta):
 	if not is_attacking:
@@ -44,7 +43,7 @@ func player_movement(delta):
 
 func play_anim(movement):
 	var dir = current_dir
-	var anim = $AnimatedSprite2D
+	var anim = $Sprite2D/AnimatedSprite2D
 
 	if dir == "right":
 		anim.flip_h = false
@@ -73,8 +72,8 @@ func play_anim(movement):
 
 func axe():
 	var dir = current_dir
-	var anim = $AnimatedSprite2D
-	if Input.is_action_just_pressed("ui_select"):
+	var anim = $Sprite2D/AnimatedSprite2D
+	if Input.is_action_just_pressed("left_click"):
 		Global.player_current_axe = true
 		is_attacking = true
 		if dir == "right":
@@ -115,3 +114,11 @@ func _on_axe_cooldown_timeout():
 	$axe_cooldown.stop()
 	Global.player_current_axe = false
 	 # Replace with function body.
+
+func in_water():
+	speed = 65
+	$AnimationPlayer.play("in_water")
+
+func on_land():
+	speed = 100
+	$AnimationPlayer.play("RESET")

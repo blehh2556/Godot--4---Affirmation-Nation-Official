@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://bbudnkeuc3040"]
 
-[ext_resource type="Script" path="res://proc_gen_world.gd" id="1_tsope"]
+[ext_resource type="Script" path="res://scripts/proc_gen_world.gd" id="1_tsope"]
 [ext_resource type="PackedScene" uid="uid://tlkoa6sbnd71" path="res://scenes/player.tscn" id="2_3df7t"]
 [ext_resource type="TileSet" uid="uid://bf5somtllgctp" path="res://data/nation.tres" id="2_p0fe6"]
 [ext_resource type="FontFile" uid="uid://rumvk3huqa2f" path="res://art/brackeys_platformer_assets/fonts/PixelOperator8-Bold.ttf" id="4_bsegx"]
@@ -11,7 +11,7 @@ offsets = PackedFloat32Array(0, 0.448065, 0.651731, 0.816701)
 colors = PackedColorArray(0, 0, 1, 1, 1, 1, 0.2, 1, 0, 1, 0.2, 1, 0.605962, 0.252677, 5.77569e-07, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ojgrh"]
-seed = 4
+seed = 2
 frequency = 0.0263
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tluis"]
@@ -43,6 +43,9 @@ text = "Welcome to Affirmation Nation"
 [node name="Player" parent="." instance=ExtResource("2_3df7t")]
 
 [node name="Camera2D2" type="Camera2D" parent="Player"]
+zoom = Vector2(4, 4)
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
