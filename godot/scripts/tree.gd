@@ -18,7 +18,7 @@ func _on_tree_hitbox_body_entered(body):
 		player_inaxe_zone = true
 		print("player")
 		if health == 0:
-			Global.player_wood += 1
+			Global.player_wood += 100
 			print("Wood: ", Global.player_wood)
 			$".".queue_free()
 			Global.save_wood()

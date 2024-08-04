@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://tlkoa6sbnd71"]
+[gd_scene load_steps=56 format=3 uid="uid://tlkoa6sbnd71"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_fj6e4"]
 [ext_resource type="Texture2D" uid="uid://bc6s6s2uuvdbf" path="res://art/Base Character - Free/front_axe.png" id="2_o3rfe"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cud3lvgktnqco" path="res://art/Base Character - Free/walk.png" id="3_eky71"]
 [ext_resource type="Texture2D" uid="uid://bgolhgms8c2b3" path="res://art/mask.png" id="3_njfpb"]
 [ext_resource type="Script" path="res://scripts/player_hitbox.gd" id="5_coeap"]
+[ext_resource type="PackedScene" uid="uid://hmyld3ukbeh7" path="res://scenes/inventory_ui.tscn" id="7_euxn7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e5jw4"]
 radius = 4.0
@@ -443,6 +444,21 @@ _data = {
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_fj6e4")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Inventory_UI" parent="CanvasLayer" instance=ExtResource("7_euxn7")]
+visible = false
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+offset_top = -216.0
+offset_right = 216.0
+offset_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 0
+size_flags_horizontal = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 1

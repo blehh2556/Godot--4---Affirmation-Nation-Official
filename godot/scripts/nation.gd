@@ -7,6 +7,7 @@ var affirmation_open = false
 
 
 func _ready():
+	$instructions_timeout.start()
 	print(tile_map.local_to_map(player.position))
 	pass # Replace with function body.
 
@@ -45,3 +46,8 @@ func toggle_menu():
 		$CanvasLayer/Affirmation.visible = true
 	else:
 		$CanvasLayer/Affirmation.visible = false
+
+
+func _on_instructions_timeout_timeout():
+	$instructions_timeout.stop()
+	$textbox.visible = false

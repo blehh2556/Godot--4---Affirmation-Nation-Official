@@ -3,15 +3,22 @@ var speed : int = 100
 var current_dir = "none"
 var is_attacking = false
 var tree_axe_cooldown = false
+@onready var inventory_ui = $CanvasLayer/Inventory_UI
+
 
 func _ready():
 	$Sprite2D/AnimatedSprite2D.play("front_idle")
+	Global.set_player_reference(self)
 
 func _physics_process(delta):
 	if not is_attacking:
 		player_movement(delta)
 	axe()
 	
+
+func _input(event):
+	if event.is_action_pressed("ui_inventory"):
+		inventory_ui.visible = !inventory_ui.visible
 
 func player_movement(delta):
 	if Input.is_action_pressed("ui_right"):

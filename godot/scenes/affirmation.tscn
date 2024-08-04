@@ -1,10 +1,24 @@
-[gd_scene load_steps=7 format=3 uid="uid://ddtahjh2loica"]
+[gd_scene load_steps=13 format=3 uid="uid://ddtahjh2loica"]
 
 [ext_resource type="FontFile" uid="uid://dqebeph0ojul7" path="res://art/brackeys_platformer_assets/fonts/PixelOperator8.ttf" id="1_crg1u"]
 [ext_resource type="Script" path="res://scripts/affirmation.gd" id="1_j34ra"]
 [ext_resource type="FontFile" uid="uid://7lseluimqeje" path="res://data/new_font_file.tres" id="2_wggfq"]
 [ext_resource type="FontFile" uid="uid://rumvk3huqa2f" path="res://art/brackeys_platformer_assets/fonts/PixelOperator8-Bold.ttf" id="3_vgjql"]
+[ext_resource type="Texture2D" uid="uid://be0teqgfoyecx" path="res://art/Tiny Swords (Update 010)/UI/Banners/Carved_3Slides.png" id="4_2r4ou"]
 [ext_resource type="Texture2D" uid="uid://dlmeda0gkx4fj" path="res://art/Base Character - Free/idle.png" id="4_d0otl"]
+[ext_resource type="Texture2D" uid="uid://05hkkfrj2l1d" path="res://art/Tiny Swords (Update 010)/UI/Ribbons/Ribbon_Blue_3Slides.png" id="6_l5xrv"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_uarjr"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dwlbg"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_s0fjx"]
+blend_mode = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_fs7m8"]
+font_size = 48
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j30wl"]
 atlas = ExtResource("4_d0otl")
@@ -84,7 +98,46 @@ theme_override_font_sizes/font_size = 24
 text = "Affirmation 3"
 metadata/_edit_use_anchors_ = true
 
+[node name="TextureRect3" type="TextureRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.007
+anchor_top = 0.354
+anchor_right = 0.514
+anchor_bottom = 0.524
+offset_left = -0.0640001
+offset_top = -0.223999
+offset_right = -0.127991
+offset_bottom = 0.255981
+texture = ExtResource("4_2r4ou")
+
+[node name="TextureRect4" type="TextureRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.573
+anchor_right = 0.514
+anchor_bottom = 0.744
+offset_left = 8.0
+offset_top = 0.112
+offset_right = -0.127991
+offset_bottom = -0.0640259
+texture = ExtResource("4_2r4ou")
+
+[node name="TextureRect5" type="TextureRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.007
+anchor_top = 0.805
+anchor_right = 0.514
+anchor_bottom = 0.976
+offset_left = -0.0640001
+offset_top = -0.0800171
+offset_right = -0.127991
+offset_bottom = -0.256042
+texture = ExtResource("4_2r4ou")
+
 [node name="affirmation_1" type="LineEdit" parent="Panel"]
+material = SubResource("CanvasItemMaterial_uarjr")
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.021
@@ -100,6 +153,7 @@ theme_override_font_sizes/font_size = 16
 metadata/_edit_use_anchors_ = true
 
 [node name="affirmation_2" type="LineEdit" parent="Panel"]
+material = SubResource("CanvasItemMaterial_dwlbg")
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.021
@@ -115,6 +169,7 @@ theme_override_font_sizes/font_size = 16
 metadata/_edit_use_anchors_ = true
 
 [node name="affirmation_3" type="LineEdit" parent="Panel"]
+material = SubResource("CanvasItemMaterial_s0fjx")
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.021
@@ -133,17 +188,19 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.049
-anchor_top = 0.105
+anchor_top = 0.0491433
 anchor_right = 0.95
-anchor_bottom = 0.178
+anchor_bottom = 0.122143
 offset_left = -0.448006
 offset_top = -0.238037
 offset_right = -0.399902
 offset_bottom = 0.18251
 theme_override_fonts/font = ExtResource("3_vgjql")
-theme_override_font_sizes/font_size = 48
 text = "Enter Daily Affrimations"
+label_settings = SubResource("LabelSettings_fs7m8")
 horizontal_alignment = 1
+autowrap_mode = 1
+text_overrun_behavior = 3
 metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect" type="TextureRect" parent="Panel"]
@@ -188,5 +245,38 @@ offset_right = 0.319992
 offset_bottom = -0.208008
 theme_override_fonts/font = ExtResource("3_vgjql")
 theme_override_font_sizes/font_size = 16
+
+[node name="TextureRect2" type="TextureRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.278
+anchor_top = 0.171
+anchor_right = 0.618
+anchor_bottom = 0.354
+offset_left = -0.256042
+offset_top = -0.176003
+offset_right = 0.0639648
+offset_bottom = -0.223999
+texture = ExtResource("6_l5xrv")
+
+[node name="Label4" type="Label" parent="Panel/TextureRect2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.204
+anchor_top = 0.133
+anchor_right = 0.806
+anchor_bottom = 0.583
+offset_left = 0.0319977
+offset_top = 0.04
+offset_right = 0.0479736
+offset_bottom = 0.0400009
+theme_override_fonts/font = ExtResource("3_vgjql")
+theme_override_font_sizes/font_size = 16
+text = "Each Affirmation
+Is worth 
+5 points!"
+horizontal_alignment = 1
+vertical_alignment = 1
+text_overrun_behavior = 1
 
 [connection signal="pressed" from="Panel/submit" to="." method="_on_submit_pressed"]

@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5vjcd4380c78"]
+
+[ext_resource type="Script" path="res://scenes/inventory_item.gd" id="1_xr353"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xgksf"]
+size = Vector2(32, 32)
+
+[node name="inventory_item" type="Node2D" groups=["Items"]]
+y_sort_enabled = true
+script = ExtResource("1_xr353")
+
+[node name="Sprite2D" type="CharacterBody2D" parent="."]
+y_sort_enabled = true
+position = Vector2(15, 15)
+scale = Vector2(1.5, 1.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D"]
+position = Vector2(0.666667, 0.666667)
+scale = Vector2(0.666667, 0.666667)
+shape = SubResource("RectangleShape2D_xgksf")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
+y_sort_enabled = true

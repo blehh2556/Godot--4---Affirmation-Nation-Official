@@ -51,9 +51,11 @@ func generate_world():
 			var tree_noise_val : float = tree_noise.get_noise_2d(x,y)
 			noise_val_arr.append(tree_noise_val)
 			
-			if noise_val >= -0.2:
+			if noise_val >= -0.1:
 				if noise_val > 0.05 and noise_val < 0.17 and tree_noise_val > 0.8:
 					tile_map.set_cell(environment_layer, Vector2i(x,y), 19, Vector2i(0,0),2)
+				if noise_val > 0.05 and noise_val < 0.17 and tree_noise_val < -0.5:
+					tile_map.set_cell(environment_layer, Vector2i(x,y), 19, Vector2i(0,0),1)
 				if noise_val > 0.2:
 					if noise_val >0.4:
 						cliff_tiles_arr.append(Vector2i(x,y))

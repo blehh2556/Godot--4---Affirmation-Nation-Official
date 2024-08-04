@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://cgr4mhsq27qxu"]
 
-[ext_resource type="Script" path="res://scenes/canvas_layer.gd" id="1_a6vi4"]
+[ext_resource type="Script" path="res://scripts/canvas_layer.gd" id="1_a6vi4"]
 [ext_resource type="Texture2D" uid="uid://b2yd56vefb0jb" path="res://art/Mini FX, Items & UI/Mini UI/Health_Indicator_Black_Outline (8 x 8).png" id="1_ejkx1"]
 [ext_resource type="Texture2D" uid="uid://etphcktba5pi" path="res://art/Sprout Lands - Sprites - Basic pack/Objects/Basic_tools_and_meterials.png" id="2_ys7oa"]
 [ext_resource type="FontFile" uid="uid://rumvk3huqa2f" path="res://art/brackeys_platformer_assets/fonts/PixelOperator8-Bold.ttf" id="3_2vvku"]
