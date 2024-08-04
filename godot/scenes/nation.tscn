@@ -128,6 +128,12 @@ position = Vector2(272, 40)
 [node name="instructions_timeout" type="Timer" parent="."]
 wait_time = 4096.0
 
+[connection signal="body_entered" from="TileMap/coin" to="TileMap/coin" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@52141" to="TileMap/@Area2D@52141" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@52142" to="TileMap/@Area2D@52142" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@52143" to="TileMap/@Area2D@52143" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@52144" to="TileMap/@Area2D@52144" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@52145" to="TileMap/@Area2D@52145" method="_on_body_entered"]
 [connection signal="pressed" from="MultiplayerHUD/Panel/VBoxContainer/HostGame" to="GameManager" method="become_host"]
 [connection signal="pressed" from="MultiplayerHUD/Panel/VBoxContainer/JoinAsPlayer2" to="GameManager" method="join_as_player_2"]
 [connection signal="timeout" from="instructions_timeout" to="." method="_on_instructions_timeout_timeout"]

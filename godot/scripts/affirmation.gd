@@ -14,10 +14,13 @@ func _ready():
 	print("Points: ", Global.player_point)
 	if Global.affirmation_1_date == Time.get_date_string_from_system(false):
 		$Panel/affirmation_1.text = "Daily Affirmation submitted"
+		$Panel/affirmation_1.editable = false
 	if Global.affirmation_2_date == Time.get_date_string_from_system(false):
 		$Panel/affirmation_2.text = "Daily Affirmation submitted"
+		$Panel/affirmation_2.editable = false
 	if Global.affirmation_3_date == Time.get_date_string_from_system(false):
 		$Panel/affirmation_3.text = "Daily Affirmation submitted"
+		$Panel/affirmation_3.editable = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

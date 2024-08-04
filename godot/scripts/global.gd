@@ -23,7 +23,8 @@ var save_path6 = "user://inventory.save"
 var inventory = []
 var player_node = null
 
-#var buildings_dropped = []
+var save_path7 = "user:buildings.save"
+var buildings_dropped = []
 
 
 
@@ -31,6 +32,10 @@ signal inventory_updated
 
 func _ready():
 	inventory.resize(9)
+	load_inventory_data()
+	load_buildings_data()
+	inventory_updated.emit()
+	#clear_inventory_save()
 
 func _process(delta):
 	load_wood_data()
@@ -39,7 +44,7 @@ func _process(delta):
 	load_aff1_date()
 	load_aff2_date()
 	load_aff3_date()
-	#load_inventory_data()
+	load_inventory_data()
 
 func set_player_reference(player):
 	player_node = player
@@ -50,11 +55,14 @@ func add_item(item):
 			inventory[i]["quantity"] += item["quantity"]
 			inventory_updated.emit()
 			print("item added", inventory)
+			save_inventory()
 			return true
 		elif inventory[i] == null:
+			item["texture_path"] = item["texture"].resource_path
 			inventory[i] = item
 			inventory_updated.emit()
 			print("item added", inventory)
+			save_inventory()
 			return true
 	return false
 
@@ -87,20 +95,60 @@ func drop_item(item_data, drop_position):
 	drop_position = adjust_drop_position(drop_position)
 	item_instance.global_position = drop_position
 	get_tree().current_scene.add_child(item_instance)
-	
+	var building_data = {
+		"type" : item_data["type"],
+		"position" : drop_position,
+		"texture_path": item_data["texture"].resource_path,
+		"scene_path": item_data["scene_path"]
+	}
+	buildings_dropped.append(building_data)
+	save_building_data()
+	print("buildings dropped: ", buildings_dropped)
+
+func save_building_data():
+	var file = FileAccess.open(save_path7, FileAccess.WRITE)
+	file.store_var(buildings_dropped)
+
+func load_buildings_data():
+	if FileAccess.file_exists(save_path7):
+		var file = FileAccess.open(save_path7,FileAccess.READ)
+		buildings_dropped = file.get_var(true)
+		for building_data in buildings_dropped:
+			var building_scene = load(building_data["scene_path"])
+			var building_instance = building_scene.instantiate()
+			building_data["texture"] = load(building_data["texture_path"])
+			building_instance.set_item_data(building_data)
+			building_instance.global_position = building_data["position"]
+			get_tree().current_scene.add_child(building_instance)
+
+func clear_inventory_save():
+	if FileAccess.file_exists(save_path7):
+		buildings_dropped.clear()
+		save_building_data()
 
 func save_inventory():
+	var inventory_to_save = []
+	for item in inventory:
+		if item != null:
+			var item_copy = item.duplicate()
+			item_copy["texture_path"] = item["texture"].resource_path
+			inventory_to_save.append(item_copy)
+		else:
+			inventory_to_save.append(null)
 	var file = FileAccess.open(save_path6, FileAccess.WRITE)
-	file.store_var(inventory)
+	file.store_var(inventory_to_save)
 
 func save_wood():
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
 	file.store_var(player_wood)
 
-#func load_inventory_data():
-	#if FileAccess.file_exists(save_path6):
-		#var file = FileAccess.open(save_path6, FileAccess.READ)
-		#inventory = file.get_var(inventory)
+func load_inventory_data():
+	if FileAccess.file_exists(save_path6):
+		var file = FileAccess.open(save_path6, FileAccess.READ)
+		inventory = file.get_var(true)
+		for i in range(inventory.size()):
+			if inventory[i] != null and inventory[i].has("texture_path"):
+				inventory[i]["texture"] = load(inventory[i]["texture_path"])
 
 func load_wood_data():
 	if FileAccess.file_exists(save_path):
