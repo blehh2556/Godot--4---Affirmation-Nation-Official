@@ -23,7 +23,7 @@ var save_path6 = "user://inventory.save"
 var inventory = []
 var player_node = null
 
-var save_path7 = "user:buildings.save"
+var save_path7 = "user://buildings.save"
 var buildings_dropped = []
 
 

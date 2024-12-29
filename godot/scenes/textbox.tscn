@@ -38,7 +38,7 @@ theme_override_fonts/normal_font = ExtResource("2_ernmp")
 theme_override_font_sizes/normal_font_size = 8
 text = "- Use arrow keys to move
 
-- press i key to open/close inventory
+- press ctrl + i key to open/close inventory
 
 - right click to chop wood"
 

@@ -49,3 +49,7 @@ func _on_submit_pressed():
 			Global.save_aff3_date()
 			print(Global.affirmation_3_date, 3)
 	Global.save_points()
+
+
+func _on_exit_pressed():
+	$".".visible = false

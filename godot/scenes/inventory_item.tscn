@@ -1,9 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://c5vjcd4380c78"]
+[gd_scene load_steps=6 format=3 uid="uid://c5vjcd4380c78"]
 
 [ext_resource type="Script" path="res://scenes/inventory_item.gd" id="1_xr353"]
+[ext_resource type="Texture2D" uid="uid://dgjubisoxcgn0" path="res://art/Sprout Lands - UI Pack - Basic pack/Sprite sheets/UI Big Play Button.png" id="2_h145u"]
+[ext_resource type="FontFile" uid="uid://dqebeph0ojul7" path="res://art/brackeys_platformer_assets/fonts/PixelOperator8.ttf" id="3_er26i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xgksf"]
 size = Vector2(32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_41xuf"]
+atlas = ExtResource("2_h145u")
+region = Rect2(0, 0, 96, 32)
 
 [node name="inventory_item" type="Node2D" groups=["Items"]]
 y_sort_enabled = true
@@ -21,3 +27,39 @@ shape = SubResource("RectangleShape2D_xgksf")
 
 [node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
 y_sort_enabled = true
+
+[node name="Button" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_right = 32.0
+offset_bottom = 32.0
+
+[node name="remove" type="NinePatchRect" parent="."]
+visible = false
+offset_left = -16.0
+offset_top = -32.0
+offset_right = 48.0
+offset_bottom = -4.0
+texture = SubResource("AtlasTexture_41xuf")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Label" type="Label" parent="remove"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 52.0
+offset_bottom = 16.0
+theme_override_fonts/font = ExtResource("3_er26i")
+theme_override_font_sizes/font_size = 8
+text = "Remove"
+
+[node name="remove_house" type="Button" parent="remove"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 24.0
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="remove/remove_house" to="." method="_on_remove_house_pressed"]
