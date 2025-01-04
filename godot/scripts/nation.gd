@@ -9,6 +9,7 @@ var affirmation_open = false
 func _ready():
 	$instructions_timeout.start()
 	print(tile_map.local_to_map(player.position))
+	Global.load_buildings_data()
 	pass # Replace with function body.
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cgr4mhsq27qxu"]
+[gd_scene load_steps=11 format=3 uid="uid://cgr4mhsq27qxu"]
 
 [ext_resource type="Script" path="res://scripts/canvas_layer.gd" id="1_a6vi4"]
 [ext_resource type="Texture2D" uid="uid://b2yd56vefb0jb" path="res://art/Mini FX, Items & UI/Mini UI/Health_Indicator_Black_Outline (8 x 8).png" id="1_ejkx1"]
@@ -18,6 +18,9 @@ region = Rect2(0, 0, 16, 16)
 [sub_resource type="LabelSettings" id="LabelSettings_jr5p2"]
 outline_size = 2
 outline_color = Color(0.0230507, 0.0111285, 0.0125329, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k0wrp"]
+bg_color = Color(0, 0.968627, 0.972549, 1)
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_a6vi4")
@@ -45,33 +48,37 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="Panel" type="Panel" parent="."]
+self_modulate = Color(1, 1, 1, 0)
 anchors_preset = -1
-anchor_left = 0.847
-anchor_top = 0.864
-anchor_right = 0.983
-anchor_bottom = 0.983
-offset_left = 3.25598
-offset_top = 0.127991
-offset_right = 102.584
-offset_bottom = 51.016
+anchor_left = 0.778
+anchor_top = 0.012
+anchor_right = 0.875
+anchor_bottom = 0.099
+offset_left = -0.256042
+offset_top = 0.224
+offset_right = 74.9999
+offset_bottom = 36.848
 scale = Vector2(0.6, 0.6)
 
 [node name="TextureRect" type="TextureRect" parent="Panel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 0.5
+anchor_right = 0.497
 anchor_bottom = 1.0
-offset_right = 3.05176e-05
+offset_right = 0.060997
 texture = SubResource("AtlasTexture_f4xia")
 
 [node name="wood_label" type="Label" parent="Panel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.5
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 3.05176e-05
-offset_right = 6.10352e-05
+anchor_left = 0.642
+anchor_top = 0.14
+anchor_right = 0.998
+anchor_bottom = 0.86
+offset_left = -0.0540009
+offset_top = -0.0200005
+offset_right = 0.373993
+offset_bottom = 0.0199966
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_2vvku")
@@ -93,13 +100,13 @@ texture = SubResource("AtlasTexture_rap8a")
 
 [node name="coin_count" type="Label" parent="."]
 anchors_preset = -1
-anchor_left = 0.931
+anchor_left = 0.937
 anchor_top = 0.025
-anchor_right = 0.965
+anchor_right = 0.972
 anchor_bottom = 0.086
-offset_left = 0.487915
+offset_left = 0.575928
 offset_top = -0.200001
-offset_right = 1.31995
+offset_right = 0.255981
 offset_bottom = 0.271999
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_2vvku")
@@ -114,5 +121,32 @@ offset_left = 32.0
 offset_top = 16.0
 offset_right = -32.0
 offset_bottom = -48.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_direction = 2
+anchors_preset = -1
+anchor_left = 0.222
+anchor_top = 0.037
+anchor_right = 0.743
+anchor_bottom = 0.099
+offset_left = 0.255981
+offset_top = 0.0240002
+offset_right = 0.0639648
+offset_bottom = -0.152008
+
+[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+size_flags_stretch_ratio = 14.84
+theme_override_styles/fill = SubResource("StyleBoxFlat_k0wrp")
+show_percentage = false
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_2vvku")
+theme_override_font_sizes/font_size = 32
 
 [connection signal="pressed" from="aff_button/Button" to="." method="_on_button_pressed"]

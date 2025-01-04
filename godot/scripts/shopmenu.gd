@@ -179,4 +179,3 @@ func buy():
 			"scene_path" : "res://scenes/inventory_item.tscn"
 		}
 		Global.add_item(building)
-

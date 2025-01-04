@@ -10,6 +10,7 @@ var save_path = "user://wood.save"
 var player_wood : int
 var save_path1 = "user://point.save"
 var player_point : int
+var player_lvl = 1
 var save_path2 = "user://coin.save"
 var player_coin : int
 var save_path3 = "user://aff1.save"
@@ -33,7 +34,6 @@ signal inventory_updated
 func _ready():
 	inventory.resize(9)
 	load_inventory_data()
-	load_buildings_data()
 	inventory_updated.emit()
 	#clear_inventory_save()
 
@@ -45,6 +45,19 @@ func _process(delta):
 	load_aff2_date()
 	load_aff3_date()
 	load_inventory_data()
+
+# Function to calculate the points required for the next level
+func nextLevel(level: int) -> int:
+	return round((4 * (level ** 3)) / 5)
+
+# Function to update the player's level
+func update_level():
+	var level = 1
+	while player_point >= nextLevel(level):
+		level += 1
+	player_lvl = level
+	return level
+
 
 func set_player_reference(player):
 	player_node = player
