@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://dqebeph0ojul7"
-path="res://.godot/imported/PixelOperator8.ttf-0d8eb86c46e505992b11967f68f5db31.fontdata"
+uid="uid://cuqhufnt16chf"
+path="res://.godot/imported/pixelFont-7-8x14-sproutLands.ttf-387f2d1ba0da69a445d7954de969c76a.fontdata"
 
 [deps]
 
-source_file="res://art/brackeys_platformer_assets/fonts/PixelOperator8.ttf"
-dest_files=["res://.godot/imported/PixelOperator8.ttf-0d8eb86c46e505992b11967f68f5db31.fontdata"]
+source_file="res://art/Sprout Lands - UI Pack/fonts/pixelFont-7-8x14-sproutLands.ttf"
+dest_files=["res://.godot/imported/pixelFont-7-8x14-sproutLands.ttf-387f2d1ba0da69a445d7954de969c76a.fontdata"]
 
 [params]
 
